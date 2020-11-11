@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta
 import time
+from sys import argv
 import random
 import csv
 """
@@ -8,8 +9,8 @@ written by zebadiah taylor
 """
 
 # Number of times the program rolls. Feel free to change.
-sim_count = 5000
-dice_size = 20
+# sim_count = 5000
+# dice_size = 20
 
 
 def dice_roll_sim_main(sim_count, dice_size):
@@ -83,4 +84,7 @@ def dice_roll_sim_main(sim_count, dice_size):
         rand_shit.writerow([f"{most_common_rolls}"])
 
 
-dice_roll_sim_main(sim_count, dice_size)
+# dice_roll_sim_main(argv[1], argv[2])
+
+# print(f"{argv[0]} is done. Find the dice_roll_simulations.csv file. Statistical analysis is at the very bottom/end.")
+print(f"{argv[0]}{argv[1]}{argv[2]}")
