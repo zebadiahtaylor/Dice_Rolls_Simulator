@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 import time
-from sys import argv
+from sys import argv, exit
 import random
 import csv
 """
@@ -8,9 +8,23 @@ this program simulates x number of dice rolls and provides the time/roll and ana
 written by zebadiah taylor
 """
 
-# Number of times the program rolls. Feel free to change.
-sim_count = float(argv[1])
-dice_size = float(argv[2])
+# Number of times the program rolls. Feel free to change. Overly large numbers can be challenging for computers. 
+# Use whole numbers only. 
+sim_count = 1000
+# The type of die the program simulates. Use whole numbers only. 
+dice_size = 20
+
+"""for future iterations to take command line arguments"""
+# try:
+#     sim_count = argv[1]
+#     dice_size = argv[2]
+# except IndexError:
+#     exit("You gave the incorrect number of arguments Try: py dice_role_sim.py ### #")
+# try: 
+#     int(sim_count)
+#     int(dice_size)
+# except TypeError, ValueError:
+#     exit("All arguments must use whole numbers only. Try: py dice_role_sim.py 1000 20")
 
 
 def dice_roll_sim_main(sim_count, dice_size):
@@ -35,7 +49,7 @@ def dice_roll_sim_main(sim_count, dice_size):
         rand_shit.writerow(["second", "microsecond", f"d{dice_size} roll"])
 
     # "Rolls" the dice sim_count number of times
-    for x in range(sim_count + 1):
+    for x in range(int(sim_count) + 1):
         now = datetime.now()
         dice_roll = random.randint(1, dice_size)
         # counts how often each number was rolled in the roll_count dict
@@ -82,8 +96,18 @@ def dice_roll_sim_main(sim_count, dice_size):
             rand_shit.writerow([f"The longest string of repeats was a roll of {max_repeated_roll}, which was rolled {max_repeats} times in a row."])
         rand_shit.writerow([f"""Below are Most Common Roll(s) and Times that # was Rolled"""])
         rand_shit.writerow([f"{most_common_rolls}"])
+    
+    # prints analysis to the terminal
+    print(f"The program simulated {sim_count} dice rolls  in {time.time() - start_time} seconds.")
+    print(f"The mean average of these numbers is {round(sum_of_nums/x, 2)}")
+    print(f"The mean roll is {round(sum_of_nums/x)}")
+    if len(multiple_max_repeated_rolls) > 1 and max_repeats > 1:
+            print(f"""The longest strings of repeats were rolls of {multiple_max_repeated_rolls}. Each were rolled {max_repeats} times in a row.""")
+    elif max_repeats > 1:
+            print(f"The longest string of repeats was a roll of {max_repeated_roll}, which was rolled {max_repeats} times in a row.")
+    print(f"""Below are Most Common Roll(s) and Times that # was Rolled""")
+    print(f"{most_common_rolls}")
+
 
 
 dice_roll_sim_main(sim_count, dice_size)
-
-# py dice_roll_sim.py 999 20
