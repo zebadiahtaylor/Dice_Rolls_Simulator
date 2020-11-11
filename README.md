@@ -1,6 +1,8 @@
 # thousand_dice_simulator
 Simulates 1000s of dice rolls and outputs statistical analysis in seconds.
 
+Currently Not Working  11/11/2020. Fix expected soon. 
+
 Records each randomly generated number into a CSV file; the statistical analysis and simulation speed is provided at the end of the file. 
 
 How to Use: NOTE: Future versions, if there are any, will focus on ease-of-use.
