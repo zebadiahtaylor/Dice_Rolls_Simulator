@@ -1,0 +1,11 @@
+
+
+
+if rollcount < 100
+if rollcount < 250
+    if mean < 8.5
+    
+    if mean > 11.5
+        You're very lucky, overall! 
+
+else:

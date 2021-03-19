@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+
+
+{% block main %}
+    <h1> DICE ROLL SIMULATIONS </h1>
+    {% if not user_sim %}
+    <!-- What user sees at first arrival -->
+        <p>
+            Why waste time and effort rolling the dice
+            in the middle of your gaming session? <br> 
+            Just roll all the dice you need for your session,
+            or over a lifetime, in one go. <br><br>
+            DRS, taking the pleasure of uncertainty from tabletop gaming since 2021.
+        </p>
+
+        <form action="/" method="post">
+            <select id="die_type" name="die_type">
+                <option value=20>Roll a d20</option>
+                <option value=2>d2</option>
+                <option value=4>d4</option>
+                <option value=6>d6</option>
+                <option value=8>d8</option>
+                <option value=10>d10</option>
+                <option value=12>d12</option>
+                <option value=20>d20</option>
+                <option value=100>d100</option>
+            </select>
+            <input type="text" autofocus id="roll_count" name="roll_count" placeholder="Number of rolls">
+            <br><br>
+            <input type="submit">
+        </form>
+    {% endif %}
+    {% if user_sim %} 
+    <!-- What shows upon a successful form post -->
+        <form action="/" method="post">
+            <select id="die_type" name="die_type">
+                <option value={{ die_type }}>Roll again!</option>
+                <option value=2>d2</option>
+                <option value=4>d4</option>
+                <option value=6>d6</option>
+                <option value=8>d8</option>
+                <option value=10>d10</option>
+                <option value=12>d12</option>
+                <option value=20>d20</option>
+                <option value=100>d100</option>
+            </select>
+            <input type="text" autofocus id="roll_count" name="roll_count" value="{{ roll_count }}">
+            <br><br>
+            <input type="submit">
+        </form>
+        <br><br>
+        You averaged {{ user_sim._mean() }} over 
+        {{ user_sim.roll_count }} rolls.
+        <br>
+        {% if user_sim._modes()|length == 1 %}
+            The most common roll was {{ user_sim.pretty_modes() }},
+            rolled {{ user_sim._mode_frequency() }} times!.
+        {% else %} 
+            The most common rolls were {{ user_sim.pretty_modes() }},
+            rolled {{ user_sim._mode_frequency() }} times each!
+        {% endif %}
+        <br><br><br>
+        <button onclick=myalert()> Hide All Rolls</button>
+        <button onclick=myalert() class="btn luck">Luck Analysis</button>
+        <script>
+            function myalert() {
+                alert("This feature is coming soon!");
+            }
+        </script>
+    {% endif %}
+    
+{% endblock %}
