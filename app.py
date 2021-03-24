@@ -9,6 +9,7 @@ OOP and Web (Flask) friendly.
 """
 
 from flask import Flask, flash, render_template, redirect, request
+from keys import sentrykitkey 
 import simulation
 from simulation import DiceRollSimulation
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
@@ -21,7 +22,7 @@ from sentry_sdk.integrations.flask import FlaskIntegration
     Sends aggregated bug alerts to my email.
 """
 sentry_sdk.init(
-    dsn="https://4cc80b3231ff473db55edd5aaaade132@o554551.ingest.sentry.io/5683234",
+    dsn= sentrykitkey,
     integrations=[FlaskIntegration()],
     # Set traces_sample_rate to 1.0 to capture 100%
     # of transactions for performance monitoring.

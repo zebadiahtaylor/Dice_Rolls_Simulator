@@ -34,6 +34,9 @@ class DiceRollSimulation():
         return modes
 
     def _mode_frequency(self):
+        """
+        Returns frequency of the mode(s)
+        """
         mode_count = 0
         the_mode = self._modes()
         for x in self.rolls_simulation:
@@ -62,3 +65,4 @@ class DiceRollSimulation():
 
     def __str__(self):
         return f"This session rolled {self.die_type} {self.roll_count} times."
+
