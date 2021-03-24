@@ -50,12 +50,19 @@ def home():
         Takes user input and creates
         a simulation via DiceRollSimulation()
         """
-        die_type = request.form.get("die_type")
-        roll_count = request.form.get("roll_count")
+        try:
+            die_type = round(int(request.form.get("die_type")))
+            roll_count = round(int(request.form.get("roll_count")))
+        
+        except TypeError:
+            error = True
+            return render_template("index.html", error=error)
+
         user_sim = DiceRollSimulation(die_type, roll_count)
-        print(" here at / ")
+
         return render_template("index.html", user_sim=user_sim, 
                 die_type=die_type, roll_count=roll_count)
+
     else:
         return render_template("index.html")
 

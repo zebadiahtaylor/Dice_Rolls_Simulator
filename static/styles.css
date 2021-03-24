@@ -1,0 +1,23 @@
+body {
+    background-color: white;
+    color:black;
+    display: inline-block;
+    text-align: center;
+}
+
+a {
+    color: inherit;
+}
+
+.luck {
+    color: green;
+    border: 1px solid black;
+}
+
+.luck:hover {
+    background-color: ivory;
+    border: 1px darkgreen;
+}
+.error {
+    color: red;
+}

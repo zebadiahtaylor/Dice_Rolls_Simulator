@@ -43,29 +43,22 @@ class DiceRollSimulation():
 
     def pretty_modes(self):
         """
-        For returning a "prettier" string
-        of the mode(s). 
+        Returns modes as a string.
         """
         modes = self._modes()
         modes = ' & '.join([str(mode) for mode in modes])
         return modes
 
+    def pretty_rolls(self):
+        """
+        Returns rolls as a string.
+        """
+        pretty_rolls = self.rolls_simulation
+        pretty_rolls = ', '.join([str(roll) for roll in pretty_rolls])
+        return pretty_rolls
+
     def __repr__(self):
-        return f"Session contained {self.roll_count} rolls w/ a d{self.die_type}"
+        return f"Instance({self.die_type}, {self.roll_count})"
 
-
-"""
-For testing purposes only
-"""
-# tuesday_night = DiceRollSimulation(20, 10000)
-# # weds_night = DiceRollSimulation(6, 500)
-# # print(f"the # of rolls: {len(tuesday_night.rolls_simulation)}")
-# # print(f"the # of rolls: {len(weds_night.rolls_simulation)}")
-# # print(tuesday_night.rolls_simulation)
-# # print(tuesday_night.find_mean_average())
-# print(f"the mode is {tuesday_night.find_modes()}, "
-#       f"rolled {tuesday_night.find_mode_frequency()} times")
-# # print(f"the mean is {mean(tuesday_night.rolls_simulation)}")
-
-# print(f"the mode is {tuesday_night.pretty_modes()}, "
-#       f"rolled {tuesday_night.find_mode_frequency()} times")
+    def __str__(self):
+        return f"This session rolled {self.die_type} {self.roll_count} times."
