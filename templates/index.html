@@ -57,21 +57,15 @@
         {{ user_sim.roll_count }} rolls.
         <br>
         {% if user_sim._modes()|length == 1 %}
-            The most common roll was {{ user_sim.pretty_modes() }},
+            The most common roll was {{ user_sim.pretty_modes }},
             rolled {{ user_sim._mode_frequency() }} times!.
         {% else %} 
-            The most common rolls were {{ user_sim.pretty_modes() }},
+            The most common rolls were {{ user_sim.pretty_modes }},
             rolled {{ user_sim._mode_frequency() }} times each!
         {% endif %}
         <br><br><br>
-        <button onclick=myalert()> Hide All Rolls</button>
+        <button onclick=display_rolls() id="display"> Display Rolls</button>
         <button onclick=myalert() class="luck">Luck Analysis</button>
-        <p> {{ user_sim.pretty_rolls() }} </p>
-        <script>
-            function myalert() {
-                alert("This feature is coming soon!");
-            }
-        </script>
+        <p class="rolls" id="rolls" style="display:none"> {{ user_sim.pretty_rolls() }} </p>
     {% endif %}
-    
 {% endblock %}

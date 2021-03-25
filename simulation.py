@@ -1,5 +1,5 @@
 """
-Mass dice roll simulator based on the OOP paradigm.  
+Mass dice roll simulator.
 """
 from datetime import datetime, timedelta
 import time
@@ -44,6 +44,7 @@ class DiceRollSimulation():
                 mode_count += 1
         return mode_count            
 
+    @property
     def pretty_modes(self):
         """
         Returns modes as a string.
