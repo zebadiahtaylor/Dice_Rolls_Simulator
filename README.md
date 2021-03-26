@@ -11,6 +11,5 @@ _ Okay, I'll come clean: I wrote this teach myself the basics of OOP & the "clas
 
 # How to use
 _ Currently, program requires a DNS key that is not included in the files.\
-_ Future implementations may show up on the web or as an executable.\
-
+_ Future implementations may show up on the web or as an executable.
 
